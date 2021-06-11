@@ -1,5 +1,5 @@
 const ItemModel = require("../models/ItemModel")
-const specialCosts = require("../specialCosts.json")
+const specialCosts = require("../secretData/specialCosts.json")
 
 async function getCost(items){
     let totalPrice = 0
@@ -18,7 +18,7 @@ async function getCost(items){
 
         // Gets the price of item
         // I do it this way because Mongo cannot return duplicate documents.  Meaning if someone orders 2 of the same items, then the returning array will only have one item
-        const item = await ItemModel.findOne({ name : items[i].itemType}, "price")
+        const item = await ItemModel.findOne({ name : items[i].itemName}, "price")
         totalPrice += item.price
     }
     

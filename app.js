@@ -19,6 +19,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use("/item", require("./routes/item/item"))
 app.use("/payment", require("./routes/payment/payment"))
 
+// const {addMenuItem} = require("./dev/dev")
+
+
 app.listen(process.env.PORT, () => {
   console.log('Running on port 3001');
 });
