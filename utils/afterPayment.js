@@ -1,14 +1,12 @@
 const {GoogleSpreadsheet} = require("google-spreadsheet")
 
-const creds = require("../secretData/client_secret.json")
-
-const doc = new GoogleSpreadsheet('1p792ZJXdLk6bP1JqDYQJp6VQhuJKY5IaiIZjYEGi-ug');
+const doc = new GoogleSpreadsheet(process.env.SPREADSHEET_ID);
 
 async function addRow(obj){
     try{
         await doc.useServiceAccountAuth({
-            client_email: creds.client_email,
-            private_key: creds.private_key,
+            client_email: process.env.SPREADSHEET_CLIENT_EMAIL,
+            private_key: process.env.SPREADSHEET_PRIVATE_KEY.replace(/\\n/g, "\n"),
         });
         await doc.loadInfo();
         const sheet = doc.sheetsByIndex[0];
@@ -20,7 +18,6 @@ async function addRow(obj){
 }
 
 async function addToSpreadsheet(items, customerDetails){
-    // console.log(items, customerDetails)
     for(let i = 0; i < items.length; i++){
         try{
             let a = await createRow(items[i], customerDetails)
