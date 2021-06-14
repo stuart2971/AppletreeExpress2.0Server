@@ -27,9 +27,19 @@ async function StartAutoCloser(){
     job.start();
 }
 
+async function isOpen(){
+    const item = await ItemModel.findOne(
+        { _id: "60c6a2b48200931fb4b7c67e" }, 
+        "price")
+
+    
+    return item.price == 1 ? true : false
+}
+
 module.exports = {
     open, 
     close,
     StartAutoOpener,
-    StartAutoCloser
+    StartAutoCloser,
+    isOpen
 }

@@ -6,11 +6,16 @@ const bodyParser = require("body-parser")
 const { getCost } = require("../utils/cost")
 const { addToSpreadsheet } = require("../utils/afterPayment")
 const { addToDatabase, getOrderFromDatabase } = require("../utils/database")
+const { isOpen } = require("../utils/changeHours")
 
 var router = express.Router();
 
 router.post('/createPayment', async (req, res) => {
 
+  if(!(await isOpen())){
+    res.json({ customError: "We were unable to process your order because we are no longer taking orders at this time. We are open Monday to Friday 11-6." })
+    return
+  }
   let _id = await addToDatabase(req.body.items, req.body.customerDetails)
 
   try{
