@@ -13,30 +13,13 @@ const ItemModel = require("../models/ItemModel")
 
 async function addMenuItem(){
     // let item = {
-    //     name: "Monster Energy Drink",
-    //     type: "other",
-    //     image: "asd",
-    //     price: 3.1,
-    //     description: "asd",
-    //     url_path: "monster_energy_drink",
-    //     modules: [{
-    //         objKey: "drink",
-    //         type: "dropdown",
-    //         required: true,
-    //         options: [{
-    //             option: "Color",
-    //             value: ""
-    //         }, {
-    //             option: "Green",
-    //             value: "green monster"
-    //         }, {
-    //             option: "Orange",
-    //             value: "orange monster"
-    //         }, {
-    //             option: "Purple",
-    //             value: "purple monster"
-    //         }]
-    //     }]
+    //     name: "",
+    //     type: "",
+    //     image: "",
+    //     price: 1,
+    //     description: "This item is to keep track of when the website is open/closed.  Website is open, price: 1.  Website is closed, price: 0",
+    //     url_path: "",
+    //     modules: []
 
     // }
     // let a = await new ItemModel(item)

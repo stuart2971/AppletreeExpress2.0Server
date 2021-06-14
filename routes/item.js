@@ -1,8 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
-const ItemModel = require("../../models/ItemModel")
-const specialCosts = require("../../secretData/specialCosts.json")
+const ItemModel = require("../models/ItemModel")
+const specialCosts = require("../secretData/specialCosts.json")
 
 // Gets an item given a url_path
 router.get("/url/:item_url", async (req, res) => {

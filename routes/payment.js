@@ -3,9 +3,9 @@ var express = require('express');
 const bodyParser = require("body-parser")
 
 
-const { getCost } = require("../../utils/cost")
-const { addToSpreadsheet } = require("../../utils/afterPayment")
-const { addToDatabase, getOrderFromDatabase } = require("../../utils/database")
+const { getCost } = require("../utils/cost")
+const { addToSpreadsheet } = require("../utils/afterPayment")
+const { addToDatabase, getOrderFromDatabase } = require("../utils/database")
 
 var router = express.Router();
 
