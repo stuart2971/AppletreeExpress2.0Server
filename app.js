@@ -24,43 +24,6 @@ app.use("/hours", require("./routes/hours"))
 // const {addMenuItem} = require("./dev/dev")
 
 
-app.post('/create-payment-intent', async (req, res) => {
-  const { paymentMethodType, currency } = req.body;
-
-  const params = {
-    payment_method_types: [paymentMethodType],
-    amount: 90,
-    currency: currency,
-  }
-
-  if(paymentMethodType === 'acss_debit') {
-    params.payment_method_options = {
-      acss_debit: {
-        mandate_options: {
-          payment_schedule: 'sporadic',
-          transaction_type: 'personal',
-        },
-      },
-    }
-  }
-
-  try {
-    const paymentIntent = await stripe.paymentIntents.create(params);
-
-    res.send({
-      clientSecret: paymentIntent.client_secret
-    });
-
-  } catch(e) {
-    return res.status(400).send({
-      error: {
-        message: e.message
-      }
-    });
-  }
-});
-
-
 app.listen(process.env.PORT, () => {
   console.log('Running on port 3001');
 });
