@@ -19,7 +19,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use("/item", require("./routes/item"))
 app.use("/payment", require("./routes/payment"))
-app.use("/hours", require("./routes/hours"))
+app.use("/admin", require("./routes/admin"))
 
 // const {addMenuItem} = require("./dev/dev")
 

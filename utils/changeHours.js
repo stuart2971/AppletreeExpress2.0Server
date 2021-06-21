@@ -2,6 +2,14 @@ var CronJob = require('cron').CronJob;
 
 const ItemModel = require("../models/ItemModel")
 
+const opener = new CronJob('0 0 11 * * 1-5', function() {
+    open()
+}, null, true, 'America/Thunder_Bay');
+
+const closer = new CronJob('0 0 18 * * 1-5', function() {
+    close()
+}, null, true, 'America/Thunder_Bay');
+
 async function open(){
     const item = await ItemModel.updateOne(
         { _id: "60c6a2b48200931fb4b7c67e" }, 
@@ -15,16 +23,16 @@ async function close(){
 }
 
 async function StartAutoOpener(){
-    var job = new CronJob('0 0 11 * * 1-5', function() {
-        open()
-    }, null, true, 'America/Thunder_Bay');
-    job.start();
+    opener.start();
 }
 async function StartAutoCloser(){
-    var job = new CronJob('0 0 18 * * 1-5', function() {
-        close()
-    }, null, true, 'America/Thunder_Bay');
-    job.start();
+    closer.start();
+}
+async function StopAutoOpener(){
+    opener.stop();
+}
+async function StopAutoCloser(){
+    closer.stop();
 }
 
 async function isOpen(){
@@ -41,5 +49,7 @@ module.exports = {
     close,
     StartAutoOpener,
     StartAutoCloser,
+    StopAutoOpener,
+    StopAutoCloser,
     isOpen
 }
