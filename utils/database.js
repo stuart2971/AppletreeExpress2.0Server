@@ -1,15 +1,15 @@
-const ItemModel = require("../models/ItemModel")
-const OrderModel = require("../models/OrderModel")
+const ItemData = require("../models/ItemData");
+const OrderModel = require("../models/OrderModel");
 
-async function addToDatabase(items, customerDetails){
-    let order = new OrderModel({ items, customerDetails })
-    let id = (await order.save())._id
-    return id.toString()
+async function addToDatabase(items, customerDetails) {
+    let order = new OrderModel({ items, customerDetails });
+    let id = (await order.save())._id;
+    return id.toString();
 }
 
-async function getOrderFromDatabase(id){
-    let order = await OrderModel.findOne({ _id: id })
-    return order
+async function getOrderFromDatabase(id) {
+    let order = await OrderModel.findOne({ _id: id });
+    return order;
 }
 
 // async function addItemToMenu(){
@@ -17,5 +17,5 @@ async function getOrderFromDatabase(id){
 // }
 module.exports = {
     addToDatabase,
-    getOrderFromDatabase
-}
+    getOrderFromDatabase,
+};

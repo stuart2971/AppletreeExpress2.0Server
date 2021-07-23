@@ -1,15 +1,15 @@
-var mongoose = require('mongoose');
+var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 const ItemData = new Schema({
-    name: String, 
+    name: String,
     type: String,
     image: String,
     price: Number,
     description: String,
     url_path: String,
     note: String,
-    modules: [Object]
-})
+    modules: [Object],
+});
 
-module.exports = mongoose.model('ItemData', ItemData); 
+module.exports = mongoose.model("ItemData", ItemData);
